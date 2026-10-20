@@ -19,3 +19,11 @@ Ennen kaappauksen aloittamista tarkistan järjestelmän verkkokortin nimen ja os
 
 > Tärkein tieto on aktiivinen verkkoliityntä `eth0` ja sen IPv4-osoite `10.0.2.15`
 
+
+<details>
+<summary>Wireshark</summary>
+  
+<img width="983" height="709" alt="image" src="https://github.com/user-attachments/assets/693f9733-40fc-406d-b5b5-e44b3b078469" />
+
+</details>
+
