@@ -36,8 +36,6 @@ Ennen kaappauksen aloittamista tarkistan järjestelmän verkkokortin nimen ja os
 
 <img width="1291" height="1020" alt="image" src="https://github.com/user-attachments/assets/774588e1-2b13-42da-b231-600689125100" />
 
-<img width="1845" height="1078" alt="image" src="https://github.com/user-attachments/assets/f221bafe-3843-4d84-a843-64418103806e" />
-
 </details>
 
 >Ping-komennon aiheuttama DNS- ja ICMP-liikenne Wiresharkissa.
@@ -63,6 +61,35 @@ Wiresharkin Packet Details -paneelista nähdään valitun DNS-paketin rakenne:
 * Lähde-MAC: `08:00:27:5a:87:bc` (OUI `08:00:27` identifioi laitteen Oracle VirtualBoxin virtuaaliseksi verkkokortiksi).
 * Kohde-MAC: Reitittimen / virtuaalisen yhdyskäytävän osoite `52:54:00:xx:xx:xx`.
 
+<details>
+<summary>TCP/IP kerrokset:</summary>
+
+<img width="1845" height="1078" alt="image" src="https://github.com/user-attachments/assets/2a3a3b1e-0a40-4496-adbf-578e99548f5b" />
+
+</details>
+
+### TCP/IP kerrokset
+
+1. Fyysinen kehys (Physical / Frame 1) — [Punainen]:
+   * `Frame 1: 70 bytes on wire...`
+   * Wiresharkin oma metadata-rivi, joka kertoo verkkokortin sieppaaman raakadatakehyksen koon (70 tavua) ja aika-leiman.
+
+2. Linkkikerros (Link Layer / Ethernet II) — [Sininen]:
+   * `Ethernet II, Src: PCSystemtec_5a:87:bc (08:00:27:5a:87:bc), Dst: 52:55:0a:00:02:02`
+   * Siirtoyhteyden L2-kehys. Lähde-MAC-osoite kuuluu virtuaalikoneen virtuaaliselle verkkokortille (Oracle VirtualBox OUI `08:00:27`) ja kohde-MAC-osoite oletusyhdyskäytävälle/reitittimelle.
+
+3. Internet-kerros (Internet Layer / IP) — [Vihreä]:
+   * `Internet Protocol Version 4, Src: 10.0.2.15, Dst: 192.168.1.1`
+   * L3 IP-paketti. Määrittelee loogiset osoitteet: lähde-IP on virtuaalikoneemme `10.0.2.15` ja kohde-IP paikallinen nimipalvelin/reititin `192.168.1.1`.
+     
+4. Kuljetuskerros (Transport Layer / UDP) — [Oranssi]:
+   * `User Datagram Protocol, Src Port: 46529, Dst Port: 53`
+   * L4-segmentti/datagrammi. Prosessien välinen liikennöinti tapahtuu porttien avulla. Lähdeportti `46529` on satunnainen dynaminen yläportti (ephemeral port) ja kohdeportti `53` on standardi DNS-palveluportti[cite: 13]. Kuljetusmuotona on UDP-protokolla sen pienemmän viiveen vuoksi (TCP-kättelyä ei tarvita ennen kyselyä).
+
+5. Sovelluskerros (Application Layer / DNS) — [Keltainen]:
+   * `Domain Name System (query)`
+   * L7-sovelluskerroksen varsinainen hyötykuorma (payload). Sisältää kyselyn tekstimuotoisen rakenteen (`A google.com`), jolla pyydetään `google.com`-isäntänimen IPv4-osoitetta.
+     
 
 ## Lähteet
 * Karvinen, T. 2026: Verkkoon tunkeutuminen ja tiedustelu. Saatavilla: https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/
