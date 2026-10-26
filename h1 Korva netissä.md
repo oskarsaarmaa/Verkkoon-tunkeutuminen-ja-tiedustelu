@@ -76,5 +76,29 @@ Kuuntelin signaalia samalla WebSDR-vastaanottimella vaihtaen modulaatiopainikkee
 * Kuunteluhavainto USB-tilassa: Koska USB (Single Sideband) on tarkoitettu kapeammalle kaistalle ja vaatii tarkan taajuussovituksen, puhe- tai musiikkilähetys kuulosti vääristyneeltä, ikään kuin "kuristuneelta" tai metalliselta verrattuna perus-AM-lähetykseen.
 
 
+## c) ADS-B – Lentoliikenteen seuranta
 
-## c) 
+### Käsitteet:
+
+* ADS-B (Automatic Dependent Surveillance-Broadcast): Lentokoneiden automaattinen ja avoin seurantajärjestelmä. Lentokone lähettää jatkuvasti ulos radiolähettimellään omaa GPS-sijaintiaan, barometrista lentokorkeuttaan, nopeuttaan, suuntaansa sekä yksilöllistä ICAO-koodiaan avoimella 1090 MHz radiotaajuudella.
+* Miten tiedot saadaan: Kuka tahansa voi vastaanottaa näitä radiosanomia pystyttämällä edullisen RTL-SDR-vastaanotintikun ja sopivan antennin (tai hyödyntämällä yhteisöjen ylläpitömiä vastaanottajaverkkoja, kuten ADS-B Exchange). Palvelut keräävät hajautetusta verkojärjestelmästä tulevan datan ja piirtävät sen reaaliaikaiseen verkkokarttaan ilman kaupallisia suodattimia tai piilotuksia.
+
+### Tehtävän toteutus ja havainnot
+
+Avasin selaimessa [ADS-B Exchange](https://www.adsbexchange.com/) -palvelun ja valitsin tarkasteluun suomalaisen matkustajakoneen.
+
+* Valittu kohde: Finnairin käyttämä potkuriturbiinikone, rekisteritunnukseltaan OH-ATI (malli ATR-72-500, ICAO-tyyppikoodi `AT75`, Hex-koodi `4601F6`).
+* Havainnot tiedoista ja kartalta:
+   * Koneen tiedot: Palvelun kautta näkyivät koneen tarkat tekniset tiedot, kuten 89 jalan pituus ja siipiväli.
+   * Reitti ja liike: Karttanäytöltä ja seurannasta pystyi reaaliaikaisesti havainnoimaan koneen lentorataa, sen käyttämää radiotaajuutta (1090 MHz) sekä lennon aikaista nopeutta ja korkeutta, jotka kone lähettää automaattisesti transponderillaan suoraan ilmaan.
+
+
+## Lähteet
+
+[Sähkömagneettinen spektri](https://fi.wikipedia.org/wiki/S%C3%A4hk%C3%B6magneettinen_spektri) 
+
+[WebSDR](http://websdr.org/)
+
+[Lentokoneliikenne](https://www.adsbexchange.com/)
+
+[Tero Karvinen kurssisivu](https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/)
