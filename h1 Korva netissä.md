@@ -48,3 +48,33 @@ Käytin etäkäyttöistä WebSDR-ohjelmaradiota (Twenten yliopiston [WebSDR-palv
 </details>
 
 Viritin vastaanottimen lyhytaaltojen (HF) 19 metrin broadcast-alueelle taajuudelle 15.39 MHz (15392.60 kHz). Valitsin modulaatiotavaksi AM (Amplitude Modulation), joka on kyseisen taajuusalueen ja yleisradiolähetysten standardi.
+
+### Havainnot
+
+Sivuston vesiputousnäytöltä erottui selvä energiahuipouma, ja signaalin voimakkuudeksi (S-meter) mitattiin noin -70.3 dBm. Koska lähetin sijaitsi kaukana Alankomaissa, signaali kantautui perille tyypillisenä ionosfäärin kautta kulkevana avaruusaaltona (skywave). Kun ääni kytkettiin päälle, taajuudella kuulunut yleisradiolähetys kuului selkeästi selaimen kaiuttimista.
+
+## b) Moduwhat? 
+
+### Tehtävän toteutus
+
+Edellisessä kohdassa (a) käytin AM (Amplitude Modulation) -modulaatiota yleisradiolähetyksen kuunteluun. Vertailun vuoksi vaihdoin modulaatiotavaksi USB (Upper Sideband) -tilan, joka on erikoistunut SSB-modulaatiomuoto (Single Sideband).
+
+Kuuntelin signaalia samalla WebSDR-vastaanottimella vaihtaen modulaatiopainikkeen AM-tilasta USB-tilaan.
+
+
+<details>
+<summary>Testitulos</summary>
+
+<img width="1216" height="451" alt="image" src="https://github.com/user-attachments/assets/8eaf1518-990e-4c5e-8c79-4af54e32ebd5" />
+
+
+</details>
+
+### Havainnot
+
+* Löysin / Kuuntelin CHN China Radio int.  
+* Kuunteluhavainto USB-tilassa: Koska USB (Single Sideband) on tarkoitettu kapeammalle kaistalle ja vaatii tarkan taajuussovituksen, puhe- tai musiikkilähetys kuulosti vääristyneeltä, ikään kuin "kuristuneelta" tai metalliselta verrattuna perus-AM-lähetykseen.
+
+
+
+## c) 
