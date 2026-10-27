@@ -136,3 +136,28 @@ $ wireshark
 5. Sovelluskerros (Application Layer / DNS) — [Keltainen]:
    * `Domain Name System (query)`
    * L7-sovelluskerroksen varsinainen hyötykuorma (payload). Sisältää kyselyn tekstimuotoisen rakenteen (`A google.com`), jolla pyydetään `google.com`-isäntänimen IPv4-osoitetta.
+
+
+## e) Mitäs tuli surffattua?
+Avasin tiedoston Wiresharkissa (`cntrl + O`) ja valitsin `surfing-secure.pcap`-tiedoston. Seuraavaksi menin ylävalikosta kohtaan `Statistics -> Capture File Properties`.
+
+<details>
+<summary>surfing-secure.pcap</summary>
+
+<img width="1687" height="813" alt="image" src="https://github.com/user-attachments/assets/3b239710-4ef8-425a-b843-67135e543fbe" />
+
+</details>
+
+### Kaappauksen yleistiedot (Capture File Properties)
+* Tiedoston nimi ja sijainti: `/home/kali/Downloads/surfing-secure.pcap`.
+* Tiedostokoko: 126 kB.
+* Pakettien kokonaismäärä 283 pakettia
+* Kaappauksen kesto (Time span): 7.536 sekuntia.
+* Keskimääräinen pakettikoko: 433 tavua.
+
+### Liikenteen yleiskuvaus
+* Kaappaus on kooltaan melko pieni ja kestoltaan lyhyt (reilu 7 sekuntia), ja se sisältää yhteensä 283 pakettia.
+* Liikenteen keskimääräinen siirtonopeus on ollut noin 16 kB/s (129 kb/s).
+* Kyseessä on tyypillinen lyhyt verkkoselailutilanne tai yksittäisen sivuston lataustapahtuma, jossa datasiirto on tapahtunut Ethernet-enkapsuloinnilla.
+
+## f) 
