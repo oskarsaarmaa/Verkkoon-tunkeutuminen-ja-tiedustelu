@@ -160,4 +160,5 @@ Avasin tiedoston Wiresharkissa (`cntrl + O`) ja valitsin `surfing-secure.pcap`-t
 * Liikenteen keskimääräinen siirtonopeus on ollut noin 16 kB/s (129 kb/s).
 * Kyseessä on tyypillinen lyhyt verkkoselailutilanne tai yksittäisen sivuston lataustapahtuma, jossa datasiirto on tapahtunut Ethernet-enkapsuloinnilla.
 
-## f) 
+## f) Mitä selainta käyttäjä käyttää?
+
