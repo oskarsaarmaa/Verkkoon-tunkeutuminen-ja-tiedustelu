@@ -71,6 +71,10 @@ $ sudo ip link set eth0 up
 
 </details>
 
+Lähde:
+
+[Karvinen 2025](https://terokarvinen.com/network-interface-linux/)
+
 ## c) Wireshark
 
 Koska käytössä on turvallisuustestaukseen tarkoitettu Kali Linux -virtuaalikone, Wireshark löytyy järjestelmästä valmiiksi asennettuna. Varmistin ohjelman toimivuuden ja version terminaalista:
@@ -106,6 +110,8 @@ $ wireshark
 
 </details>
 
+[Karvinen 2025](https://terokarvinen.com/wireshark-getting-started/)
+
 ## d) Oikeesti TCP/IP
 
 <details>
@@ -137,6 +143,9 @@ $ wireshark
    * `Domain Name System (query)`
    * L7-sovelluskerroksen varsinainen hyötykuorma (payload). Sisältää kyselyn tekstimuotoisen rakenteen (`A google.com`), jolla pyydetään `google.com`-isäntänimen IPv4-osoitetta.
 
+Lähde:
+
+[TCP/IP viitemalli](https://fi.wikipedia.org/wiki/TCP/IP-viitemalli)
 
 ## e) Mitäs tuli surffattua?
 Avasin tiedoston Wiresharkissa (`cntrl + O`) ja valitsin `surfing-secure.pcap`-tiedoston. Seuraavaksi menin ylävalikosta kohtaan `Statistics -> Capture File Properties`.
@@ -159,6 +168,13 @@ Avasin tiedoston Wiresharkissa (`cntrl + O`) ja valitsin `surfing-secure.pcap`-t
 * Kaappaus on kooltaan melko pieni ja kestoltaan lyhyt (reilu 7 sekuntia), ja se sisältää yhteensä 283 pakettia.
 * Liikenteen keskimääräinen siirtonopeus on ollut noin 16 kB/s (129 kb/s).
 * Kyseessä on tyypillinen lyhyt verkkoselailutilanne tai yksittäisen sivuston lataustapahtuma, jossa datasiirto on tapahtunut Ethernet-enkapsuloinnilla.
+
+Lähde:
+
+[Karvinen 2025](https://terokarvinen.com/wireshark-getting-started/)
+
+[Wireshark Docs](https://www.wireshark.org/docs/)
+
 
 ## f) Mitä selainta käyttäjä käyttää?
 Yritin tehdä suodattamalla Wiresharkissa `tls.handshake.type == 1`, mutta en saanut selainta selville.
@@ -204,3 +220,14 @@ Tein oman verkkoliikenteen sieppauksen Wiresharkilla samalla, kun avasin verkkos
 <img width="1946" height="1145" alt="image" src="https://github.com/user-attachments/assets/b48aa455-86c3-4887-bd3f-4dfdc7bfc990" />
 
 </details>
+
+## Lähteet
+
+[Karvinen 2025](https://terokarvinen.com/network-interface-linux/)
+
+[Karvinen 2025](https://terokarvinen.com/wireshark-getting-started/)
+
+[Kurssisivu](https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/#tehtavanannot)
+
+[Wireshark Docs](https://www.wireshark.org/docs/)
+
