@@ -161,4 +161,46 @@ Avasin tiedoston Wiresharkissa (`cntrl + O`) ja valitsin `surfing-secure.pcap`-t
 * Kyseessä on tyypillinen lyhyt verkkoselailutilanne tai yksittäisen sivuston lataustapahtuma, jossa datasiirto on tapahtunut Ethernet-enkapsuloinnilla.
 
 ## f) Mitä selainta käyttäjä käyttää?
+Yritin tehdä suodattamalla Wiresharkissa `tls.handshake.type == 1`, mutta en saanut selainta selville.
 
+## g) Minkä merkkinen verkkokortti käyttäjällä on? 
+
+Tutkin kaappauksen pakettien linkkikerroksen tietoja Wiresharkissa ja tarkastelin Ethernet-kehyksen lähdeosoitetta (Ethernet II, Src).
+
+<details>
+<summary>Wireshark kaappaus</summary>
+
+<img width="2067" height="1209" alt="image" src="https://github.com/user-attachments/assets/8b240c25-e8e3-49b1-9f2f-f48d6a969d9e" />
+
+</details>
+
+* MAC-osoite ja OUI: Kaappauksessa näkyvän laitteen MAC-osoitteen alkuosa eli OUI-tunniste on `52:54:00` (esimerkiksi osoitteessa `52:54:00:2f:e1:e5`).
+* Valmistaja: Kun OUI-tunnisteen selvitti hakukoneella, selvisi, että kyseinen MAC-alue kuuluu QEMU / KVM -virtuaaliympäristön virtuaalisille verkkokorteille.
+
+## h) Millä weppipalvelimella käyttäjä on surffaillut?
+
+* Vaikka varsinainen verkkoliikenne on suojattu TLS-salauksella, kohdepalvelimet saadaan silti selville suodattamalla liikennettä Wiresharkisa (`tls.handshake.type == 1`).
+* Server Name Indication (SNI): Wiresharkin TLS-kättelyviesteistä (Client Hello) nähdään selkokielisenä kohdepalvelimen verkkotunnus eli SNI (kuten `terokarvinen.com` ja `terokarvinen.goatcounter.com`), joiden perusteella käyttäjä on vieraillut kyseisen sivuston sivuilla.
+  
+<details>
+<summary>Wireshark kaappaus</summary>
+
+<img width="1246" height="219" alt="image" src="https://github.com/user-attachments/assets/7b934100-016b-4d49-88cf-eed41a80ead8" />
+
+</details>
+
+i) Oman liikenteen analyysi
+
+Tein oman verkkoliikenteen sieppauksen Wiresharkilla samalla, kun avasin verkkosivuja. Kaappauksen ensimmäiset paketit avaavat hienosti verkkoyhteyden muodostumisen eri vaiheet:
+
+1. Nimiselvitys (DNS): Ennen liikenteen alkua tietokone tekee DNS-kyselyitä (esimerkiksi osoitteeseen `www.kali.org`), jotta se saa selville kohdepalvelimen IP-osoitteen.
+2. Yhteyden luominen (TCP Handshake): Ennen sovellustason tietojen siirtoa luodaan luotettava yhteys perinteisellä kolmivaiheisella kättelyllä (`SYN`, `SYN-ACK`, `ACK`).
+3. Salattu TLS-liikenne: Kun TCP-yhteys on valmis, siirrytään käyttämään modernia TLSv1.3-salattua yhteyttä, jossa kättelyvaiheessa näkyy selkokielinen SNI-tieto (kuten `cloudflare-ech.com`).
+* Laitteen tunnistetiedot: Kaappauksen linkkikerroksen tiedoista nähdään koneeni IP-osoite (`10.0.2.15`) ja MAC-osoitteen perusteella VirtualBoxin verkkokortin OUI-tunniste (`08:00:27`).
+
+<details>
+<summary>Wireshark kaappaus</summary>
+
+<img width="1946" height="1145" alt="image" src="https://github.com/user-attachments/assets/b48aa455-86c3-4887-bd3f-4dfdc7bfc990" />
+
+</details>
