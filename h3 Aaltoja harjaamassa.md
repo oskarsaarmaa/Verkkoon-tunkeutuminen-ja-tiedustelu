@@ -151,4 +151,29 @@ Tiedostonimi `1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s
 
 ## g) Bittistä
 
- 
+ Latasin ` 1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s.` tiedoston [Terokarvinen.com](https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/). 
+
+
+<details>
+<summary>URH tulos</summary>
+
+<img width="2546" height="796" alt="image" src="https://github.com/user-attachments/assets/51868726-08a0-4ead-95f7-5d62ee138da6" />
+
+</details>
+
+URH-ohjelmassa (`Interpretation`-näkymä) suoritin signaalin demoduloinnin ja bittien tulkinnan:
+
+* Oikea modulaatio: Signaalille valitsin ASK (Amplitude Shift Keying / OOK).
+* Ajoitus: Näytteenottotaajuudella 2 MSps (2 000 000 näytettä sekunnissa) ja asetuksella `Samples/Symbol = 500` yhden raakabitin kesto ajassa lasketaan seuraavasti:
+
+Aika = 500 näytettä / 2 000 000 näytettä/s = 0,00025 s = 250 µs
+
+* Yhden raakabitin kesto: Yhden raakabitin pituus on tarkalleen 250 µs.
+* 250 mikrosekuntia on neljäsosa millisekunnista. Esimerkiksi ihmisen silmänräpäys kestää tyypillisesti noin 100–400 millisekuntia – kaukosäätimen yksittäinen raakabitti on siis noin tuhat kertaa nopeampi kuin yksi silmänräpäys.
+
+Lähde:
+
+Tehtävän tekoon käytin [hubmartin](https://www.youtube.com/watch?v=sbqMqb6FVMY&t=199s) loistavaa videoa.
+
+
+Katsoin [Nurminen 2025](https://github.com/nurminenkasper/Verkkoon-tunkeutuminen-ja-tiedustelu/blob/main/h3/h3-Aaltoja-harjaamassa.md) raporttia.
