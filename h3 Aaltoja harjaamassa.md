@@ -88,5 +88,67 @@ Latasin tiedoston [Terokarvinen.com:sta](https://terokarvinen.com/verkkoon-tunke
 * Ryhmäkutsu (Group / Group Call): 0 / No
 
 
-## d) Too compex 16?
+## d) Too complex 16? (complex16s -> rtl_433)
 
+Tallennetut näytteet ovat `.complex16s`-muodossa, koska `rtl_433` ei lue tiedoston sisäisiä otsikkotietoja (headereitä), sille on ilmoitettava keskitaajuus ja näytteenottotaajuus suoraan tiedoston nimessä. [Merbanan](https://github.com/merbanan/rtl_433)
+
+Kopioin `rtl_433`-ohjelman odottamaan muotoon:
+
+```bash
+cp Recorded-HackRF-20250411_183354-433_92MHz-2MSps-2MHz.complex16s Recorded_433.92M_2000k.cu16
+
+```
+
+Ajan nyt uudelleen nimetyn tiedoston:
+
+```bash
+./rtl_433 -r Recorded_433.92M_2000k.cu16
+
+```
+
+<details>
+<summary>Testitulos</summary>
+
+<img width="746" height="80" alt="image" src="https://github.com/user-attachments/assets/3165097e-a778-4539-9533-d5c9c1a3ccb3" />
+
+</details>
+
+### Miksi mitään tulosta ei näy?
+
+* `rtl_433` käsittelee tiedoston sisällön reaaliajassa sen simuroidun keston mukaan. Jos tiedosto on pitkä tai siinä on tyhjää kohinaa ennen varsinaista radiosignaalin pursketta, ruudulle ei tulostu mitään ennen kuin ohjelma löytää ja kykenee purkamaan tunnistettavan paketin.
+* Tuloste on täysin normaali. Ohjelma toimii halutulla tavalla ja lukee tiedostoa offline-tilassa. Mikäli tiedostossa on mukana tuettu protokolla ja radiosignaali, dekoodatut tiedot ilmestyvät ruudulle ohjelman edetessä. 
+
+
+## e) Ultimate
+
+Ultimate Radio Hacker on työkalu radiosignaalien sieppaukseen, demodulointiin ja analysointiin. Yritin asentaa perinteisesti apt install avulla mutta pakettia ei löydetty. Ihmettelin hetken ja löysinkin vinkeistä, että kannattaa asentaa `pipx` avulla. [Terokarvinen.com](https://terokarvinen.com/verkkoon-tunkeutuminen-ja-tiedustelu/)
+
+Ajoin seuraavat komennot:
+
+```bash
+sudo apt update
+sudo apt install -y pipx
+pipx install urh
+pipx ensurepath
+
+```
+
+<details>
+<summary>Asennus</summary>
+
+<img width="1087" height="749" alt="image" src="https://github.com/user-attachments/assets/3f784ac1-d456-40f2-9c11-df13af55c99c" />
+
+</details>
+
+## f) Yleiskuva näytteestä
+
+Tiedostonimi `1-on-on-on-HackRF-20250412_113805-433_912MHz-2MSps-2MHz.complex16s` paljastaa suoraan tarvittavat tekniset metatiedot:
+
+* Keskitaajuus: 433,912 MHz
+* Näytteenottotaajuus: 2 MSps (2 000 000 näytettä sekunnissa)
+* Tallennusaika: 12.4.2025 klo 11:38:05
+
+
+## g) Bittistä
+
+ 
